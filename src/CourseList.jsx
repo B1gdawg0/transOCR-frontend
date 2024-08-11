@@ -1,6 +1,8 @@
 import React from 'react';
 import DataSource from './assets/output.json';
 import CourseCard from './components/subject_card';
+import { useNavigate } from 'react-router-dom';
+
 
 const CoursesList = () => {
     const groupMap = {
@@ -33,12 +35,17 @@ const CoursesList = () => {
 
     const toFixed = (n, fixed) => `${n}`.match(new RegExp(`^-?\\d+(?:\.\\d{0,${fixed}})?`))[0];
 
-    // Calculating GPAX for each subject group
     const groupedCourses = Object.values(courses).map(course => ({
         name: course.name,
         totalUnits: course.totalUnits,
         gpax: toFixed(course.totalGradePoints / course.totalUnits, 2)
     }));
+
+    const navigate = useNavigate();
+    const handleClick = (event) => {
+        navigate('/detail')
+    }
+
 
     return (
         <div className='columns-1 align-middle'>
@@ -51,7 +58,15 @@ const CoursesList = () => {
                     grade={course.gpax}
                 />
             ))}
+            <div className='w-full text-right'>
+                <button
+                    onClick={handleClick}
+                    className="bg-indigo-400 text-white px-4 py-2 rounded mx-[200px] my-[20px] text-lg " >
+                    ดูเกรดแต่ละรายวิชา
+                </button>
+            </div>
         </div>
+
     );
 };
 
