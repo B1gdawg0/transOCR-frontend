@@ -3,13 +3,13 @@ import React, { useState } from 'react';
 const ReportPage = () => {
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
-    const [subject, setSubject] = useState(''); // State for dropdown
+    const [subject, setSubject] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("Email:", email);
         console.log("Message:", message);
         console.log("Subject:", subject);
+        window.open(`mailto:fsciscr@ku.ac.th?subject=${subject}&body=${message}`);
         setEmail('');
         setMessage('');
         setSubject('');
@@ -21,20 +21,6 @@ const ReportPage = () => {
                 <h2 className='text-2xl font-bold text-gray-800 mb-4 text-center'>
                     สวัสดี, ให้เราช่วยเรื่องอะไรดี ?
                 </h2>
-                <div className='mb-4'>
-                    <label className='block text-gray-700 font-semibold mb-2' htmlFor='email'>
-                        Your Email:
-                    </label>
-                    <input
-                        type='email'
-                        id='email'
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                        className='w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500'
-                        placeholder='Enter your email'
-                    />
-                </div>
                 <div className='mb-4'>
                     <label className='block text-gray-700 font-semibold mb-2' htmlFor='subject'>
                         Select a Subject:
