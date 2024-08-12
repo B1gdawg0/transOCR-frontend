@@ -36,7 +36,7 @@ const CourseDetail = () => {
     }, {});
 
     return (
-        <div className="p-8 min-h-screen font-sans mx-10 my-10 rounded-xl shadow-2xl bg-white">
+        <div className="p-8 min-h-screen font-sans ml-[140px] mr-2 my-10 rounded-xl shadow-2xl bg-white">
             {
                 Object.entries(groupedCourses).map(([group, courses]) => (
                     <div key={group} className="mb-12">

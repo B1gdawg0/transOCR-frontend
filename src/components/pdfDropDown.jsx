@@ -27,8 +27,8 @@ function PdfDropdown() {
   };
 
   return (
-    <>
-      <div className={`p-6 max-w-md mx-auto bg-white rounded-xl shadow-md space-y-4 mt-5 bg-indigo-700 ${isSubmitting ? 'hidden' : ''}`}>
+    <div className='h-screen w-screen'>
+      <div className={`p-6 max-w-md mx-auto bg-white rounded-xl shadow-md space-y-4 mt-5 ${isSubmitting ? 'hidden' : ''}`}>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="flex flex-col">
             <label htmlFor="pdf-select" className="mb-3 text-white font-medium">Choose a PDF:</label>
@@ -70,13 +70,13 @@ function PdfDropdown() {
         <div className="absolute inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 flex-col">
           <svg className="animate-spin h-16 w-16 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor">
             <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-            <path className="opacity-75" fill="none" d="M4 12a8 8 0 0 1 8-8v2a6 6 0 0 0-6 6H4zm16 0a8 8 0 0 0-8-8v2a6 6 0 0 1 6 6h2zm-8 8a8 8 0 0 1-8-8h2a6 6 0 0 0 6 6v2zm8-8a8 8 0 0 1-8 8v-2a6 6 0 0 0 6-6h2z"/>
+            <path className="opacity-75" fill="none" d="M4 12a8 8 0 0 1 8-8v2a6 6 0 0 0-6 6H4zm16 0a8 8 0 0 0-8-8v2a6 6 0 0 1 6 6h2zm-8 8a8 8 0 0 1-8-8h2a6 6 0 0 0 6 6v2zm8-8a8 8 0 0 1-8 8v-2a6 6 0 0 0 6-6h2z" />
           </svg>
 
           <h1 className='mt-3 text-white block'>Loading...!</h1>
         </div>
       )}
-    </>
+    </div>
   );
 }
 

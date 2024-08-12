@@ -15,12 +15,11 @@ createRoot(document.getElementById('root')).render(
     <Router>
       <NavBar />
       <Routes>
-        <Route path="/report" element={<ReportPage />} />
         <Route path="/" element={<PdfDropdown />} />
         <Route path="/data" element={<CourseList />} />
         <Route path="/detail" element={<CourseDetail />} />
         <Route path="/serverside" element={<Serverside />} />
-        <Route path="/report" element={<PdfDropdown />} />
+        <Route path="/report" element={<ReportPage />} />
       </Routes>
     </Router>
   </StrictMode>
