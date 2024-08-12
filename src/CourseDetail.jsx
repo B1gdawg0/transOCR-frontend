@@ -1,5 +1,5 @@
 import React from 'react';
-import DataSource from './assets/output.json';
+import DataSource from './assets/output1.json';
 
 const CourseDetail = () => {
     const groupMap = {

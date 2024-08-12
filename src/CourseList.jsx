@@ -1,5 +1,5 @@
 import React from 'react';
-import DataSource from './assets/output.json';
+import DataSource from './assets/output1.json';
 import CourseCard from './components/subject_card';
 import { useNavigate } from 'react-router-dom';
 
@@ -16,6 +16,7 @@ const CoursesList = () => {
         'ง': 'การงานอาชีพ',
         'I': 'การศึกษาค้นคว้าด้วยตนเอง'
     };
+
 
     const courses = Object.values(DataSource.data).reduce((acc, course) => {
         const groupKey = course.id.charAt(0);
