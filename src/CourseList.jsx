@@ -49,23 +49,26 @@ const CoursesList = () => {
 
 
     return (
-        <div className='columns-1 align-middle'>
-            {groupedCourses.map((course, index) => (
-                <CourseCard
-                    key={index}
-                    id={index + 1}
-                    name={course.name}
-                    unit={course.totalUnits}
-                    grade={course.gpax}
-                />
-            ))}
-            <div className='w-full text-right'>
-                <button
-                    onClick={handleClick}
-                    className="bg-indigo-400 text-white px-4 py-2 rounded mx-[200px] my-[20px] text-lg " >
-                    ดูเกรดแต่ละรายวิชา
-                </button>
+        <div className='bg-white ml-44 mr-5 my-5 rounded-3xl'>
+            <div className='columns-1 align-middle p-8'>
+                {groupedCourses.map((course, index) => (
+                    <CourseCard
+                        key={index}
+                        id={index + 1}
+                        name={course.name}
+                        unit={course.totalUnits}
+                        grade={course.gpax}
+                    />
+                ))}
+                <div className='w-full text-right'>
+                    <button
+                        onClick={handleClick}
+                        className="bg-green-950 text-white px-4 py-2 rounded mx-[200px] my-[20px] text-lg " >
+                        ดูเกรดแต่ละรายวิชา
+                    </button>
+                </div>
             </div>
+
         </div>
 
     );
