@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+
 function PdfDropdown() {
   const [selectedFile, setSelectedFile] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -16,14 +17,14 @@ function PdfDropdown() {
     setIsSubmitting(true);
     setTimeout(() => {
       navigate('/data');
-    }, 6000);
+    }, 4000);
   };
 
   return (
     <>
-    <div className={`p-6 max-w-md mx-auto bg-white rounded-xl shadow-md space-y-4 mt-5 bg-indigo-500 ${isSubmitting ? 'hidden' : ''}`}>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div className="flex flex-col">
+    <div className={`p-6 max-w-md mx-auto bg-white rounded-xl shadow-md space-y-4 mt-5 bg-indigo-600 ${isSubmitting ? 'hidden' : ''}`}>
+      <form onSubmit={handleSubmit} className="space-y-4 ">
+        <div className="flex flex-col ">
           <label htmlFor="pdf-select" className="mb-3 text-white font-medium">Choose a PDF:</label>
           <select
             id="pdf-select"
@@ -32,7 +33,8 @@ function PdfDropdown() {
             className="mt-1 p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
             <option value="">--Please choose an option--</option>
-            <option value="picture1.png">picture1.pdf</option>
+            <option value="picture1.png">picture1.png</option>
+            <option value="errorfile.png">picture2.png</option>
           </select>
         </div>
       </form>
