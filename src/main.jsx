@@ -6,6 +6,7 @@ import CourseList from './CourseList';
 import './index.css';
 import CourseDetail from './CourseDetail';
 import NavBar from './components/navbar';
+import Serverside from './components/serverside';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -15,7 +16,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/" element={<PdfDropdown />} />
         <Route path="/data" element={<CourseList />} />
         <Route path="/detail" element={<CourseDetail />} />
-        <Route path="/serverside" element={<PdfDropdown />} />
+        <Route path="/serverside" element={<Serverside />} />
         <Route path="/report" element={<PdfDropdown />} />
       </Routes>
     </Router>
