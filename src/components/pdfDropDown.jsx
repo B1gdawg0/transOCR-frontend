@@ -6,6 +6,7 @@ function PdfDropdown() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const navigate = useNavigate();
 
+
   const handleSelectChange = (event) => {
     const file = event.target.value;
     setSelectedFile(file);
@@ -14,25 +15,25 @@ function PdfDropdown() {
   const handleSubmit = (event) => {
     event.preventDefault();
     setIsSubmitting(true);
-  
+
     setTimeout(() => {
       if (selectedFile !== "picture2.png") {
-        navigate('/data');
+        localStorage.setItem('filename', selectedFile);
+        navigate('/data')
       } else {
         localStorage.setItem('errorData', JSON.stringify({
           transOCR_client_email: localStorage.getItem('transOCR_client_email'),
           fileFrom: selectedFile
         }));
-  
+
         alert('ไฟล์ของคุณอาจไม่ชัดหรือเอียง กรุณาส่งใหม่อีกครั้ง');
         navigate('/scan');
       }
-  
+
       setIsSubmitting(false);
       setSelectedFile("");
     }, 4000);
   };
-  
 
   return (
     <div className='h-screen w-screen'>
@@ -49,6 +50,9 @@ function PdfDropdown() {
               <option value="">--Please choose an option--</option>
               <option value="picture1.png">picture1.png</option>
               <option value="picture2.png">picture2.png</option>
+              {/* <option value="picture3.png">picture3.png</option>
+              <option value="picture4.png">picture4.png</option> */}
+             
             </select>
           </div>
         </form>
@@ -78,13 +82,12 @@ function PdfDropdown() {
         <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 flex-col z-50">
           <svg className="animate-spin h-16 w-16 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor">
             <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-            <path className="opacity-75" fill="none" d="M4 12a8 8 0 0 1 8-8v2a6 6 0 0 0-6 6H4zm16 0a8 8 0 0 0-8-8v2a6 6 0 0 1 6 6h2zm-8 8a8 8 0 0 1-8-8h2a6 6 0 0 0 6 6v2zm8-8a8 8 0 0 1-8 8v-2a6 6 0 0 0 6-6h2z" />
+            <path className="opacity-75" fill="none" d="M4 12a8 8 0 0 1 8-8v2a6 6 0 0 0-6 6H4zm16 0a8 8 0 0 0-8-8v2a6 6 0 0 1 6 6h2zm-8 8a8 8 0 0 1-8 8v-2a6 6 0 0 0 6-6h2z" />
           </svg>
 
           <h1 className='mt-3 text-white block'>Loading...!</h1>
         </div>
       )}
-
     </div>
   );
 }

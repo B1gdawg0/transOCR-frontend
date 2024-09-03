@@ -18,14 +18,14 @@ function ErrorReport(props) {
             </div>
 
             <div>
-                <div 
-                    onClick={handleClickCreate} 
+                <div
+                    onClick={handleClickCreate}
                     className="flex justify-between items-center text-orange-600 border-[1px] border-orange-500 px-3 py-1 rounded cursor-pointer mb-2"
                 >
                     Create report email
                 </div>
-                <div 
-                    onClick={handleClickDone} 
+                <div
+                    onClick={handleClickDone}
                     className="flex justify-between text-white bg-green-700 px-3 py-1 rounded cursor-pointer"
                 >
                     Done

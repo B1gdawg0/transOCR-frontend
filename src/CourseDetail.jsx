@@ -1,18 +1,68 @@
-import React from 'react';
-import DataSource from './assets/output1.json';
+import React, { useState, useEffect } from 'react';
 
 const CourseDetail = () => {
-    const groupMap = {
-        'ท': 'ภาษาไทย',
-        'ส': 'สังคมศึกษา',
-        'ค': 'คณิตศาสตร์',
-        'ว': 'วิทยาศาสตร์',
-        'อ': 'ภาษาต่างประเทศ',
-        'พ': 'สุขศึกษาและพลศึกษา',
-        'ศ': 'ศิลปะ',
-        'ง': 'การงานอาชีพ',
-        'I': 'การศึกษาค้นคว้าด้วยตนเอง'
-    };
+    const [groupedCourses, setGroupedCourses] = useState({});
+    const dataSource = localStorage.getItem('filename');
+
+    useEffect(() => {
+        const loadDataSource = async () => {
+            let data;
+            try {
+                switch (dataSource) {
+                    case 'picture1.png':
+                        data = await import('./assets/output1.json');
+                        break;
+                    case 'picture3.png':
+                        data = await import('./assets/output3.json');
+                        break;
+                    case 'picture4.png':
+                        data = await import('./assets/output4.json');
+                        break;
+                    default:
+                        console.error('Unknown data source');
+                        return;
+                }
+
+                const groupMap = {
+                    'ท': 'ภาษาไทย',
+                    'ส': 'สังคมศึกษา',
+                    'ค': 'คณิตศาสตร์',
+                    'ว': 'วิทยาศาสตร์',
+                    'อ': 'ภาษาต่างประเทศ',
+                    'พ': 'สุขศึกษาและพลศึกษา',
+                    'ศ': 'ศิลปะ',
+                    'ง': 'การงานอาชีพ',
+                    'I': 'การศึกษาค้นคว้าด้วยตนเอง',
+                    'ญ': 'ภาษาต่างประเทศ',
+                    'จ': 'ภาษาต่างประเทศ',
+                    'ฝ': 'ภาษาต่างประเทศ',
+                    'ย': 'ภาษาต่างประเทศ'
+                };
+
+
+
+                const grouped = Object.values(data.default.data).reduce((groups, course) => {
+                    const groupKey = groupMap[course.id.charAt(0)];
+                    if (['ญ', 'อ', 'จ', 'ฝ', 'ย'].includes(groupKey)) {
+                        groupKey = 'อ';
+                    }
+                    console.log("Group key is " + groupKey)
+
+                    if (!groups[groupKey]) {
+                        groups[groupKey] = [];
+                    }
+                    groups[groupKey].push(course);
+                    return groups;
+                }, {});
+
+                setGroupedCourses(grouped);
+            } catch (error) {
+                console.error('Error loading data source:', error);
+            }
+        };
+
+        loadDataSource();
+    }, [dataSource]);
 
     const colorMap = {
         'ภาษาไทย': 'bg-red-500',
@@ -25,15 +75,6 @@ const CourseDetail = () => {
         'การงานอาชีพ': 'bg-teal-500',
         'การศึกษาค้นคว้าด้วยตนเอง': 'bg-indigo-500',
     };
-
-    const groupedCourses = Object.values(DataSource.data).reduce((groups, course) => {
-        const groupKey = groupMap[course.id.charAt(0)];
-        if (!groups[groupKey]) {
-            groups[groupKey] = [];
-        }
-        groups[groupKey].push(course);
-        return groups;
-    }, {});
 
     return (
         <div className="p-8 min-h-screen font-sans ml-[140px] mr-2 my-10 rounded-xl shadow-2xl bg-white">
@@ -63,8 +104,7 @@ const CourseDetail = () => {
                     </div>
                 ))
             }
-        </div >
-
+        </div>
     );
 }
 
