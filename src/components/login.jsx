@@ -1,20 +1,44 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { json, useNavigate } from 'react-router-dom';
 
 function Login() {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        if (email.trim() !== "" && password.trim() !== "") {
-            navigate("/scan");
-            localStorage.setItem('transOCR_client_email', email);
-        } else {
-            alert("Email/Password ของคุณไม่สามารถใช้งานได้. กรุณาลองใหม่อีกครั้ง");
+        if(email.trim() != "" && password.trim() != ""){
+            try{
+                const response = await fetch("http://127.0.0.1:5000/login", {
+                    method:"POST",
+                    headers:{
+                        'Content-Type':"application/json"
+                    },
+                    body:JSON.stringify({email, password})
+                })
+
+                if (response.status == 200){
+                    const {email,token} = await response.json();
+                    localStorage.setItem('uselessToken', token);
+                    localStorage.setItem('email', email);
+                    navigator("/scan")
+                }else{
+                    alert("error register")
+                }
+            }catch(e){
+                console.log(e)
+            }
+            
+        }else{
+            alert("Email/Password ของคุณไม่สามารถใช้งานได้. กรุณาลองใหม่อีกครั้ง")
         }
     };
+
+    const handleSignUp = (e) =>{
+        e.preventDefault
+        navigator("/register")
+    }
 
     return (
         <div className="flex items-center justify-center min-h-screen bg-gray-900">
@@ -49,6 +73,12 @@ function Login() {
                     >
                         Login
                     </button>
+
+                    <center>
+                        <p className='mt-6 text-neutral-500 text-[13px]'> 
+                            Don't have any acount? <span className='text-sky-400 cursor-pointer' onClick={handleSignUp}>Sign up now.</span>
+                        </p>
+                    </center>
                 </form>
             </div>
         </div>
