@@ -27,9 +27,9 @@ function NavBar() {
                 <div onClick={goFileScan} className="my-3 rounded bg-white w-12 h-12 flex items-center justify-center hover:bg-indigo-600 hover:text-white transition-colors duration-300">
                     <FileScan />
                 </div>
-                <div onClick={goServerSide} className="my-3 rounded bg-white w-12 h-12 flex items-center justify-center hover:bg-indigo-600 hover:text-white transition-colors duration-300">
+                {/* <div onClick={goServerSide} className="my-3 rounded bg-white w-12 h-12 flex items-center justify-center hover:bg-indigo-600 hover:text-white transition-colors duration-300">
                     <Server />
-                </div>
+                </div> */}
                 <div onClick={goFlag} className="my-3 rounded bg-white w-12 h-12 flex items-center justify-center hover:bg-indigo-600 hover:text-white transition-colors duration-300">
                     <Flag />
                 </div>
