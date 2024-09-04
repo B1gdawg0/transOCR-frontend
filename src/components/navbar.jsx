@@ -1,4 +1,4 @@
-import { Flag, Server, FileScan , LogOut } from 'lucide-react';
+import { Flag, Server, FileScan, LogOut } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 function NavBar() {
@@ -22,22 +22,22 @@ function NavBar() {
     }
 
     return (
-        <div className="fixed top-0 left-0 w-[80px] h-screen shadow-md flex flex-col justify-between items-center bg-white">
-            <div className='flex flex-col'>
-                <div onClick={goFileScan} className="my-3 rounded bg-white w-12 h-12 flex items-center justify-center hover:bg-indigo-600 hover:text-white transition-colors duration-300">
+        <div className="fixed top-0 left-0 w-full h-[50px] shadow-md flex justify-between items-center bg-white">
+            <div className='flex'>
+                <div onClick={goFileScan} className="mx-3 rounded  w-12 h-12 flex items-center justify-center hover:bg-indigo-600 hover:text-white transition-colors duration-300">
                     <FileScan />
                 </div>
-                <div onClick={goServerSide} className="my-3 rounded bg-white w-12 h-12 flex items-center justify-center hover:bg-indigo-600 hover:text-white transition-colors duration-300">
+                <div onClick={goServerSide} className="mx-3 rounded  w-12 h-12 flex items-center justify-center hover:bg-indigo-600 hover:text-white transition-colors duration-300">
                     <Server />
                 </div>
-                <div onClick={goFlag} className="my-3 rounded bg-white w-12 h-12 flex items-center justify-center hover:bg-indigo-600 hover:text-white transition-colors duration-300">
+                <div onClick={goFlag} className="mx-3 rounded  w-12 h-12 flex items-center justify-center hover:bg-indigo-600 hover:text-white transition-colors duration-300">
                     <Flag />
                 </div>
             </div>
 
-            <div className='flex flex-col'>
-                <div onClick={goLogout} className='my-3 rounded bg-white w-12 h-12 flex items-center justify-center hover:bg-red-500 hover:text-white transition-colors duration-300'>
-                    <LogOut></LogOut>
+            <div className='flex'>
+                <div onClick={goLogout} className='mx-3 rounded  w-12 h-12 flex items-center justify-center hover:bg-red-500 hover:text-white transition-colors duration-300'>
+                    <LogOut />
                 </div>
             </div>
         </div>

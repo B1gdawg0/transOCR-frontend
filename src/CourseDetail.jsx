@@ -23,7 +23,7 @@ const CourseDetail = () => {
                         return;
                 }
 
-                const groupMap = {
+               const groupMap = {
                     'ท': 'ภาษาไทย',
                     'ส': 'สังคมศึกษา',
                     'ค': 'คณิตศาสตร์',
@@ -42,7 +42,7 @@ const CourseDetail = () => {
 
 
                 const grouped = Object.values(data.default.data).reduce((groups, course) => {
-                    const groupKey = groupMap[course.id.charAt(0)];
+                     groupKey = groupMap[course.id.charAt(0)];
                     if (['ญ', 'อ', 'จ', 'ฝ', 'ย'].includes(groupKey)) {
                         groupKey = 'อ';
                     }

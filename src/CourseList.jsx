@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import CourseCard from './components/subject_card';
+import CourseCard from './components/course_card';
 import { useNavigate } from 'react-router-dom';
 
 const CoursesList = () => {

@@ -9,6 +9,7 @@ import './index.css';
 import NavBar from './components/navbar';
 import Serverside from './components/serverside';
 import Login from './components/login';
+import InfoPage from './InfoPage';
 
 const App = () => {
   const location = useLocation();
@@ -19,6 +20,7 @@ const App = () => {
       {!isLoginPage && <NavBar />}
       <Routes>
         <Route path="/" element={<Login />} />
+        <Route path="/info" element={<InfoPage />} />
         <Route path="/scan" element={<PdfDropdown />} />
         <Route path="/data" element={<CourseList />} />
         <Route path="/detail" element={<CourseDetail />} />

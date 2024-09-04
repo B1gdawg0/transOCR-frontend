@@ -36,7 +36,7 @@ function PdfDropdown() {
   };
 
   return (
-    <div className='h-screen w-screen'>
+    <div className='h-screen w-screen mt-20'>
       <div className={`p-6 max-w-md mx-auto bg-white rounded-xl shadow-md space-y-4 mt-5`}>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="flex flex-col">
@@ -52,7 +52,7 @@ function PdfDropdown() {
               <option value="picture2.png">picture2.png</option>
               {/* <option value="picture3.png">picture3.png</option>
               <option value="picture4.png">picture4.png</option> */}
-             
+
             </select>
           </div>
         </form>
