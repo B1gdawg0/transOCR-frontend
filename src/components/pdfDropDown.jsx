@@ -9,8 +9,25 @@ function PdfDropdown() {
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
 
-  const handleSelectChange = (event) => {
-    const file = event.target.value;
+  async function fetchData() {
+    try {
+      const response = await fetch(`http://127.0.0.1:5000/info/${localStorage.getItem("email")}`);
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      const data = await response.json(); 
+      if (data.subjects.length !== 0) setDone(true);
+
+    } catch (error) {
+      console.error('Fetch error:', error);
+    }
+  }
+
+  useEffect(() => { fetchData() }, []);
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
     setSelectedFile(file);
   };
 
@@ -102,7 +119,7 @@ function PdfDropdown() {
         <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 flex-col z-50">
           <svg className="animate-spin h-16 w-16 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor">
             <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-            <path className="opacity-75" fill="none" d="M4 12a8 8 0 0 1 8-8v2a6 6 0 0 0-6 6H4zm16 0a8 8 0 0 0-8-8v2a6 6 0 0 1 6 6h2zm-8 8a8 8 0 0 1-8 8v-2a6 6 0 0 0 6-6h2z" />
+            <path className="opacity-75" fill="none" d="M4 12a8 8 0 0 1 8-8v2a6 6 0 0 0-6 6H4zm16 0a8 8 0 0 0-8-8v2a6 6 0 0 1 6 6h2zm-8 8a8 8 0 0 1-8-8h2a6 6 0 0 0 6 6v2zm8-8a8 8 0 0 1-8 8v-2a6 6 0 0 0 6-6h2z" />
           </svg>
           <h1 className='mt-3 text-white block'>Loading...!</h1>
         </div>

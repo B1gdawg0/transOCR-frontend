@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 
 const CourseDetail = () => {
     const [groupedCourses, setGroupedCourses] = useState({});
-    const dataSource = localStorage.getItem('filename');
+    // const dataSource = localStorage.getItem('filename');
+    const dataSource = 'picture4.png'
 
+    console.log(dataSource)
     useEffect(() => {
         const loadDataSource = async () => {
             let data;
@@ -23,7 +25,7 @@ const CourseDetail = () => {
                         return;
                 }
 
-               const groupMap = {
+                const groupMap = {
                     'ท': 'ภาษาไทย',
                     'ส': 'สังคมศึกษา',
                     'ค': 'คณิตศาสตร์',
@@ -42,7 +44,7 @@ const CourseDetail = () => {
 
 
                 const grouped = Object.values(data.default.data).reduce((groups, course) => {
-                     groupKey = groupMap[course.id.charAt(0)];
+                    var groupKey = groupMap[course.id.charAt(0)];
                     if (['ญ', 'อ', 'จ', 'ฝ', 'ย'].includes(groupKey)) {
                         groupKey = 'อ';
                     }
