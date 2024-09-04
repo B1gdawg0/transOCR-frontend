@@ -22,7 +22,7 @@ function Login() {
                     const {email,token} = await response.json();
                     localStorage.setItem('uselessToken', token);
                     localStorage.setItem('email', email);
-                    navigator("/scan")
+                    navigate("/scan")
                 }else{
                     alert("error register")
                 }
@@ -37,7 +37,7 @@ function Login() {
 
     const handleSignUp = (e) =>{
         e.preventDefault
-        navigator("/register")
+        navigate("/register")
     }
 
     return (
