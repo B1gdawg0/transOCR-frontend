@@ -1,16 +1,36 @@
 import React, { useState } from 'react';
 
 const ReportPage = () => {
-    const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
     const [subject, setSubject] = useState('');
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault();
-        console.log("Message:", message);
-        console.log("Subject:", subject);
-        window.open(`mailto:fsciscr@ku.ac.th?subject=${subject}&body=${message}`);
-        setEmail('');
+        console.log(message)
+        console.log(subject)
+        try{
+            const response = await fetch (`http://127.0.0.1:5000/report/${localStorage.getItem("email")}`,{
+                method:"POST",
+                headers:{
+                    'Content-Type':"application/json"
+                },
+                body:JSON.stringify({
+                    "category":subject,
+                    "report":message
+                })
+            })
+
+
+            if(response.ok){
+                alert("Done! your request has sent to server")
+            }else{
+                alert("Something error: "+response.body.message)
+            }
+        }catch(e){
+            alert("Something error: "+response.body.message)
+        }
+
+
         setMessage('');
         setSubject('');
     };
