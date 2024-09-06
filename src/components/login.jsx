@@ -40,11 +40,25 @@ function Login() {
         navigate("/register");
     };
 
+    const handleBack = () => {
+        navigate(-1); // Navigates back to the previous page
+    };
+
+
     return (
-        <div className="flex items-center justify-center min-h-screen bg-white relative overflow-hidden" id='login-page'>
-            {/* Wavy Background */}
-            <div className="absolute top-0 left-0 w-full h-full z-0 wave"></div>
-            <div className="relative z-10 bg-white p-8 rounded-lg shadow-lg w-full max-w-sm border-2 border-black">
+        <div
+            className="flex items-center justify-center min-h-screen bg-cover bg-center relative overflow-hidden" // Replace with your image URL
+            id="login-page"
+        >
+            <div className="absolute top-4 left-4">
+                <button
+                    onClick={handleBack}
+                    className="text-black hover:text-red-500 font-bold text-lg"
+                >
+                    &larr; Back
+                </button>
+            </div>
+            <div className="relative z-10 bg-white/30 backdrop-blur-md p-8 rounded-lg shadow-lg w-full max-w-sm border-2 border-black">
                 <h2 className="text-3xl font-bold mb-8 text-black text-center">Login</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="mb-6">
@@ -77,8 +91,8 @@ function Login() {
                     </button>
 
                     <center>
-                        <p className='mt-6 text-gray-400 text-[13px]'>
-                            Don't have any account? <span className='text-black cursor-pointer transition duration-200 hover:text-red-500' onClick={handleSignUp}>Sign up now.</span>
+                        <p className="mt-6 text-gray-400 text-[13px]">
+                            Don't have any account? <span className="text-black cursor-pointer transition duration-200 hover:text-red-500" onClick={handleSignUp}>Sign up now.</span>
                         </p>
                     </center>
                 </form>
