@@ -17,7 +17,10 @@ function PdfDropdown() {
       }
 
       const data = await response.json(); 
-      if (data.subjects.length !== 0) setDone(true);
+      if (data.subjects.length !== 0){ 
+        setDone(true);
+        localStorage.setItem("subjects",JSON.stringify(data.subjects))
+      }
 
     } catch (error) {
       console.error('Fetch error:', error);
@@ -34,6 +37,7 @@ function PdfDropdown() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     setIsSubmitting(true);
+
 
     if (!selectedFile) {
       setMessage('No file selected');
@@ -57,7 +61,9 @@ function PdfDropdown() {
 
         if (response_ocr.ok) {
           setDone(true);
-          // TODO: route to somewhere
+          
+          fetchData()
+          navigate("/data")
         } else {
           alert("Something went wrong");
         }

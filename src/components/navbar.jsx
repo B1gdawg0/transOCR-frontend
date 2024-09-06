@@ -17,12 +17,13 @@ function NavBar() {
     }
 
     function goLogout() {
-        localStorage.removeItem('transOCR_client_email');
+        localStorage.removeItem('email');
+        localStorage.removeItem('subjects');
         navigate('/');
     }
 
     return (
-        <div className="fixed top-0 left-0 w-full h-[50px] shadow-md flex justify-between items-center bg-white">
+        <div className="fixed top-0 left-0 w-full h-[50px] shadow-md flex justify-between items-center bg-white z-50">
             <div className='flex'>
                 <div onClick={goFileScan} className="mx-3 rounded  w-12 h-12 flex items-center justify-center hover:bg-indigo-600 hover:text-white transition-colors duration-300">
                     <FileScan />
