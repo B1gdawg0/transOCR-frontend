@@ -35,7 +35,8 @@ const CoursesList = () => {
     };
 
     return (
-        <div className='bg-white ml-44 mr-5 my-5 rounded-3xl'>
+        <div className='w-full h-auto' id='data-bg'>
+            <div className='bg-white op ml-28 mr-28 my-10 rounded-3xl shadow-2xl'>
             <div className='columns-1 align-middle p-8'>
                 {
                     categoryList.map((category, index) => (
@@ -62,6 +63,7 @@ const CoursesList = () => {
                     </button>
                 </div>
             </div>
+        </div>
         </div>
     );
 };

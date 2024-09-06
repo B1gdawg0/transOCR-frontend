@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { json, useNavigate } from 'react-router-dom';
+import Footer from './footer';
 
 function Login() {
     const navigate = useNavigate();
@@ -41,63 +42,66 @@ function Login() {
     };
 
     const handleBack = () => {
-        navigate(-1); // Navigates back to the previous page
+        navigate('/'); // Navigates back to the previous page
     };
 
 
     return (
-        <div
-            className="flex items-center justify-center min-h-screen bg-cover bg-center relative overflow-hidden" // Replace with your image URL
-            id="login-page"
-        >
-            <div className="absolute top-4 left-4">
-                <button
-                    onClick={handleBack}
-                    className="text-black hover:text-red-500 font-bold text-lg"
-                >
-                    &larr; Back
-                </button>
-            </div>
-            <div className="relative z-10 bg-white/30 backdrop-blur-md p-8 rounded-lg shadow-lg w-full max-w-sm border-2 border-black">
-                <h2 className="text-3xl font-bold mb-8 text-black text-center">Login</h2>
-                <form onSubmit={handleSubmit}>
-                    <div className="mb-6">
-                        <label htmlFor="email" className="block text-black font-medium mb-2">Email</label>
-                        <input
-                            id="email"
-                            type="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            className="w-full p-3 border border-black rounded-lg focus:ring-2 focus:ring-gray-400 focus:outline-none"
-                            required
-                        />
-                    </div>
-                    <div className="mb-8">
-                        <label htmlFor="password" className="block text-black font-medium mb-2">Password</label>
-                        <input
-                            id="password"
-                            type="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            className="w-full p-3 border border-black rounded-lg focus:ring-2 focus:ring-gray-400 focus:outline-none"
-                            required
-                        />
-                    </div>
+        <>
+            <div
+                className="flex items-center justify-center min-h-screen bg-cover bg-center relative overflow-hidden" // Replace with your image URL
+                id="login-page"
+            >
+                <div className="absolute top-4 left-4">
                     <button
-                        type="submit"
-                        className="w-full bg-white text-black p-3 rounded-lg border-2 border-black hover:bg-black hover:text-white transition-colors duration-300 font-semibold text-lg"
+                        onClick={handleBack}
+                        className="text-black hover:text-red-500 font-bold text-lg"
                     >
-                        Login
+                        &larr; Back
                     </button>
+                </div>
+                <div className="relative z-10 bg-white/30 backdrop-blur-md p-8 rounded-lg shadow-lg w-full max-w-sm border-2 border-black">
+                    <h2 className="text-3xl font-bold mb-8 text-black text-center">Login</h2>
+                    <form onSubmit={handleSubmit}>
+                        <div className="mb-6">
+                            <label htmlFor="email" className="block text-black font-medium mb-2">Email</label>
+                            <input
+                                id="email"
+                                type="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                className="w-full p-3 border border-black rounded-lg focus:ring-2 focus:ring-gray-400 focus:outline-none"
+                                required
+                            />
+                        </div>
+                        <div className="mb-8">
+                            <label htmlFor="password" className="block text-black font-medium mb-2">Password</label>
+                            <input
+                                id="password"
+                                type="password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                className="w-full p-3 border border-black rounded-lg focus:ring-2 focus:ring-gray-400 focus:outline-none"
+                                required
+                            />
+                        </div>
+                        <button
+                            type="submit"
+                            className="w-full bg-white text-black p-3 rounded-lg border-2 border-black hover:bg-black hover:text-white transition-colors duration-300 font-semibold text-lg"
+                        >
+                            Login
+                        </button>
 
-                    <center>
-                        <p className="mt-6 text-gray-400 text-[13px]">
-                            Don't have any account? <span className="text-black cursor-pointer transition duration-200 hover:text-red-500" onClick={handleSignUp}>Sign up now.</span>
-                        </p>
-                    </center>
-                </form>
+                        <center>
+                            <p className="mt-6 text-gray-400 text-[13px]">
+                                Don't have any account? <span className="text-black cursor-pointer transition duration-200 hover:text-red-500" onClick={handleSignUp}>Sign up now.</span>
+                            </p>
+                        </center>
+                    </form>
+                </div>
             </div>
-        </div>
+            <Footer/>
+        </>
     );
 }
 

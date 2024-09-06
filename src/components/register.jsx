@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Footer from './footer';
 
 function RegisterForm() {
     const navigator = useNavigate();
@@ -52,7 +53,8 @@ function RegisterForm() {
     };
 
     return (
-        <div className="flex items-center justify-center min-h-screen bg-white">
+        <>
+            <div className="flex items-center justify-center min-h-screen bg-white">
             <div className="absolute top-4 left-4">
                 <button
                     onClick={handleBack}
@@ -111,7 +113,9 @@ function RegisterForm() {
                     </p>
                 </center>
             </div>
-        </div>
+            </div>
+            <Footer/>
+        </>
     );
 }
 
