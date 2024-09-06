@@ -84,8 +84,8 @@ const InfoPage = () => {
                                 { name: "Kawin S.", github: "https://github.com/UADG", image: "https://img5.pic.in.th/file/secure-sv1/Unnamed-phone-wallpaper.png" },
                                 { name: "Pinpawat L.", github: "https://github.com/ppwlsw", image: "https://img2.pic.in.th/pic/IMG_03857b9219a214c45e3d.jpg" }
                             ].map((member, index) => (
-                                <div key={index} className="flex flex-col items-center max-w-[300px] w-full sm:w-[48%] lg:w-[22%] rounded-2xl bg-gray-800 shadow-lg border-2 border-black">
-                                    <div className="w-full h-full overflow-hidden rounded-t-2xl">
+                                <div key={index} className=" flex flex-col items-center max-w-[300px] w-full sm:w-[48%] lg:w-[22%] rounded-2xl bg-gray-800 shadow-lg border-2 border-black">
+                                    <div className=" h-full overflow-hidden rounded-t-2xl">
                                         <img src={member.image} alt={member.name} className="w-full h-full object-cover" />
                                     </div>
                                     <div className="flex w-full my-3 px-4 justify-between items-center text-white">
