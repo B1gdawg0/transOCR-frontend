@@ -33,9 +33,7 @@ const App = () => {
 };
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
     <Router>
       <App />
     </Router>
-  </StrictMode>
 );
