@@ -1,5 +1,7 @@
-import { Flag, Server, FileScan, LogOut } from 'lucide-react';
+import { Flag, BookOpenCheck, FileScan, LogOut } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+
+
 
 function NavBar() {
     const navigate = useNavigate();
@@ -8,8 +10,8 @@ function NavBar() {
         navigate('/scan');
     }
 
-    function goServerSide() {
-        navigate('/serverside');
+    function goScannedPage() {
+        navigate('/data');
     }
 
     function goFlag() {
@@ -28,8 +30,8 @@ function NavBar() {
                 <div onClick={goFileScan} className="mx-3 rounded  w-12 h-12 flex items-center justify-center hover:bg-indigo-600 hover:text-white transition-colors duration-300">
                     <FileScan />
                 </div>
-                <div onClick={goServerSide} className="mx-3 rounded  w-12 h-12 flex items-center justify-center hover:bg-indigo-600 hover:text-white transition-colors duration-300">
-                    <Server />
+                <div onClick={goScannedPage} className="mx-3 rounded  w-12 h-12 flex items-center justify-center hover:bg-indigo-600 hover:text-white transition-colors duration-300">
+                    <BookOpenCheck />
                 </div>
                 <div onClick={goFlag} className="mx-3 rounded  w-12 h-12 flex items-center justify-center hover:bg-indigo-600 hover:text-white transition-colors duration-300">
                     <Flag />
