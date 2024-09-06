@@ -11,7 +11,7 @@ const HowItWorks = () => {
         <div id="how-it-works" className="flex w-screen h-screen justify-center items-center">
             <div className="max-w-6xl mx-auto text-center">
                 <h2 className="text-4xl font-bold mb-24 text-gray-800">How It Works</h2>
-                <div className="flex justify-around mt-12">
+                <div className="flex flex-col md:flex-row justify-around items-center md:items-start m-10 md:m-24 space-y-12 md:space-y-0">
                     <div className="flex flex-col items-center">
                         <FaFileUpload className="text-9xl ease-in-out transition duration-500  hover:text-[#f54545] transform hover:-translate-y-1 hover:scale-110" />
                         <h3 className="mt-4 text-2xl font-semibold"> Upload </h3>
