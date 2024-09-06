@@ -7,75 +7,75 @@ const CoursesList = () => {
     const dataSource = localStorage.getItem('filename');
     const navigate = useNavigate();
 
-    useEffect(() => {
-        const loadDataSource = async () => {
-            let data;
-            try {
-                switch (dataSource) {
-                    case 'picture1.png':
-                        data = await import('./assets/output1.json');
-                        break;
-                    case 'picture3.png':
-                        data = await import('./assets/output3.json');
-                        break;
-                    case 'picture4.png':
-                        data = await import('./assets/output4.json');
-                        break;
-                    default:
-                        console.error('Unknown data source');
-                        return;
-                }
+    // useEffect(() => {
+    //     const loadDataSource = async () => {
+    //         let data;
+    //         try {
+    //             switch (dataSource) {
+    //                 case 'picture1.png':
+    //                     data = await import('./assets/output1.json');
+    //                     break;
+    //                 case 'picture3.png':
+    //                     data = await import('./assets/output3.json');
+    //                     break;
+    //                 case 'picture4.png':
+    //                     data = await import('./assets/output4.json');
+    //                     break;
+    //                 default:
+    //                     console.error('Unknown data source');
+    //                     return;
+    //             }
 
-                const groupMap = {
-                    'ท': 'ภาษาไทย',
-                    'ส': 'สังคมศึกษา',
-                    'ค': 'คณิตศาสตร์',
-                    'ว': 'วิทยาศาสตร์',
-                    'อ': 'ภาษาต่างประเทศ',
-                    'พ': 'สุขศึกษาและพลศึกษา',
-                    'ศ': 'ศิลปะ',
-                    'ง': 'การงานอาชีพ',
-                    'I': 'การศึกษาค้นคว้าด้วยตนเอง',
-                    'ญ': 'ภาษาต่างประเทศ',
-                    'จ': 'ภาษาต่างประเทศ',
-                    'ฝ': 'ภาษาต่างประเทศ',
-                    'ย': 'ภาษาต่างประเทศ'
-                };
-                const processedCourses = Object.values(data.default.data).reduce((acc, course) => {
-                    let groupKey = course.id.charAt(0);
-                    if (['ญ', 'อ', 'จ', 'ฝ', 'ย'].includes(groupKey)) {
-                        groupKey = 'อ'; // Normalize to 'อ' as the common key
-                    }
-                    if (!acc[groupKey]) {
-                        acc[groupKey] = {
-                            name: groupMap[groupKey],
-                            totalUnits: 0,
-                            totalGradePoints: 0
-                        };
-                    }
+    //             const groupMap = {
+    //                 'ท': 'ภาษาไทย',
+    //                 'ส': 'สังคมศึกษา',
+    //                 'ค': 'คณิตศาสตร์',
+    //                 'ว': 'วิทยาศาสตร์',
+    //                 'อ': 'ภาษาต่างประเทศ',
+    //                 'พ': 'สุขศึกษาและพลศึกษา',
+    //                 'ศ': 'ศิลปะ',
+    //                 'ง': 'การงานอาชีพ',
+    //                 'I': 'การศึกษาค้นคว้าด้วยตนเอง',
+    //                 'ญ': 'ภาษาต่างประเทศ',
+    //                 'จ': 'ภาษาต่างประเทศ',
+    //                 'ฝ': 'ภาษาต่างประเทศ',
+    //                 'ย': 'ภาษาต่างประเทศ'
+    //             };
+    //             const processedCourses = Object.values(data.default.data).reduce((acc, course) => {
+    //                 let groupKey = course.id.charAt(0);
+    //                 if (['ญ', 'อ', 'จ', 'ฝ', 'ย'].includes(groupKey)) {
+    //                     groupKey = 'อ'; // Normalize to 'อ' as the common key
+    //                 }
+    //                 if (!acc[groupKey]) {
+    //                     acc[groupKey] = {
+    //                         name: groupMap[groupKey],
+    //                         totalUnits: 0,
+    //                         totalGradePoints: 0
+    //                     };
+    //                 }
 
-                    acc[groupKey].totalUnits += parseFloat(course.unit);
-                    acc[groupKey].totalGradePoints += parseFloat(course.unit) * parseFloat(course.grade);
+    //                 acc[groupKey].totalUnits += parseFloat(course.unit);
+    //                 acc[groupKey].totalGradePoints += parseFloat(course.unit) * parseFloat(course.grade);
 
-                    return acc;
-                }, {});
+    //                 return acc;
+    //             }, {});
 
-                const toFixed = (n, fixed) => `${n}`.match(new RegExp(`^-?\\d+(?:\.\\d{0,${fixed}})?`))[0];
+    //             const toFixed = (n, fixed) => `${n}`.match(new RegExp(`^-?\\d+(?:\.\\d{0,${fixed}})?`))[0];
 
-                const groupedCourses = Object.values(processedCourses).map(course => ({
-                    name: course.name,
-                    totalUnits: course.totalUnits,
-                    gpax: toFixed(course.totalGradePoints / course.totalUnits, 2)
-                }));
+    //             const groupedCourses = Object.values(processedCourses).map(course => ({
+    //                 name: course.name,
+    //                 totalUnits: course.totalUnits,
+    //                 gpax: toFixed(course.totalGradePoints / course.totalUnits, 2)
+    //             }));
 
-                setCourses(groupedCourses);
-            } catch (error) {
-                console.error('Error loading data source:', error);
-            }
-        };
+    //             setCourses(groupedCourses);
+    //         } catch (error) {
+    //             console.error('Error loading data source:', error);
+    //         }
+    //     };
 
-        loadDataSource();
-    }, [dataSource]);
+    //     loadDataSource();
+    // }, [dataSource]);
 
     const handleClick = () => {
         navigate('/detail');

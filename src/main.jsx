@@ -11,13 +11,15 @@ import PdfInputPage from './PdfInputPage';
 import RegisterPage from './RegisterPage';
 import InfoPage from './InfoPage';
 
+
 const App = () => {
   const location = useLocation();
   const isLoginPage = location.pathname === '/' || location.pathname === '/register';
+  const isInfoPage = location.pathname === '/info'
 
   return (
     <>
-      {!isLoginPage && <NavBar />}
+      {!isInfoPage && !isLoginPage && <NavBar />}
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/info" element={<InfoPage />} />
@@ -26,7 +28,7 @@ const App = () => {
         <Route path="/detail" element={<CourseDetail />} />
         {/* <Route path="/serverside" element={<Serverside />} /> */}
         <Route path="/report" element={<ReportPage />} />
-        <Route path='/register' element={<RegisterPage/>} />
+        <Route path='/register' element={<RegisterPage />} />
       </Routes>
     </>
   );

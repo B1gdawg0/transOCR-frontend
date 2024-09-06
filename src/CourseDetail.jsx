@@ -6,65 +6,65 @@ const CourseDetail = () => {
     const dataSource = 'picture4.png'
 
     console.log(dataSource)
-    useEffect(() => {
-        const loadDataSource = async () => {
-            let data;
-            try {
-                switch (dataSource) {
-                    case 'picture1.png':
-                        data = await import('./assets/output1.json');
-                        break;
-                    case 'picture3.png':
-                        data = await import('./assets/output3.json');
-                        break;
-                    case 'picture4.png':
-                        data = await import('./assets/output4.json');
-                        break;
-                    default:
-                        console.error('Unknown data source');
-                        return;
-                }
+    // useEffect(() => {
+    //     const loadDataSource = async () => {
+    //         let data;
+    //         try {
+    //             switch (dataSource) {
+    //                 case 'picture1.png':
+    //                     data = await import('./assets/output1.json');
+    //                     break;
+    //                 case 'picture3.png':
+    //                     data = await import('./assets/output3.json');
+    //                     break;
+    //                 case 'picture4.png':
+    //                     data = await import('./assets/output4.json');
+    //                     break;
+    //                 default:
+    //                     console.error('Unknown data source');
+    //                     return;
+    //             }
 
-                const groupMap = {
-                    'ท': 'ภาษาไทย',
-                    'ส': 'สังคมศึกษา',
-                    'ค': 'คณิตศาสตร์',
-                    'ว': 'วิทยาศาสตร์',
-                    'อ': 'ภาษาต่างประเทศ',
-                    'พ': 'สุขศึกษาและพลศึกษา',
-                    'ศ': 'ศิลปะ',
-                    'ง': 'การงานอาชีพ',
-                    'I': 'การศึกษาค้นคว้าด้วยตนเอง',
-                    'ญ': 'ภาษาต่างประเทศ',
-                    'จ': 'ภาษาต่างประเทศ',
-                    'ฝ': 'ภาษาต่างประเทศ',
-                    'ย': 'ภาษาต่างประเทศ'
-                };
+    //             const groupMap = {
+    //                 'ท': 'ภาษาไทย',
+    //                 'ส': 'สังคมศึกษา',
+    //                 'ค': 'คณิตศาสตร์',
+    //                 'ว': 'วิทยาศาสตร์',
+    //                 'อ': 'ภาษาต่างประเทศ',
+    //                 'พ': 'สุขศึกษาและพลศึกษา',
+    //                 'ศ': 'ศิลปะ',
+    //                 'ง': 'การงานอาชีพ',
+    //                 'I': 'การศึกษาค้นคว้าด้วยตนเอง',
+    //                 'ญ': 'ภาษาต่างประเทศ',
+    //                 'จ': 'ภาษาต่างประเทศ',
+    //                 'ฝ': 'ภาษาต่างประเทศ',
+    //                 'ย': 'ภาษาต่างประเทศ'
+    //             };
 
 
 
-                const grouped = Object.values(data.default.data).reduce((groups, course) => {
-                    var groupKey = groupMap[course.id.charAt(0)];
-                    if (['ญ', 'อ', 'จ', 'ฝ', 'ย'].includes(groupKey)) {
-                        groupKey = 'อ';
-                    }
-                    console.log("Group key is " + groupKey)
+    //             const grouped = Object.values(data.default.data).reduce((groups, course) => {
+    //                 var groupKey = groupMap[course.id.charAt(0)];
+    //                 if (['ญ', 'อ', 'จ', 'ฝ', 'ย'].includes(groupKey)) {
+    //                     groupKey = 'อ';
+    //                 }
+    //                 console.log("Group key is " + groupKey)
 
-                    if (!groups[groupKey]) {
-                        groups[groupKey] = [];
-                    }
-                    groups[groupKey].push(course);
-                    return groups;
-                }, {});
+    //                 if (!groups[groupKey]) {
+    //                     groups[groupKey] = [];
+    //                 }
+    //                 groups[groupKey].push(course);
+    //                 return groups;
+    //             }, {});
 
-                setGroupedCourses(grouped);
-            } catch (error) {
-                console.error('Error loading data source:', error);
-            }
-        };
+    //             setGroupedCourses(grouped);
+    //         } catch (error) {
+    //             console.error('Error loading data source:', error);
+    //         }
+    //     };
 
-        loadDataSource();
-    }, [dataSource]);
+    //     loadDataSource();
+    // }, [dataSource]);
 
     const colorMap = {
         'ภาษาไทย': 'bg-red-500',
