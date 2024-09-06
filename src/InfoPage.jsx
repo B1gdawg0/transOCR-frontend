@@ -5,10 +5,18 @@ import HowItWorks from './components/how_it_work';
 import Technologies from './components/tech_stack';
 import ScrollReveal from './components/scroll_reveal';
 import ScrollAnimation from "react-animate-on-scroll";
+import { useNavigate } from "react-router-dom";
 
 import 'animate.css';
 
 const InfoPage = () => {
+
+    const navigate = useNavigate();
+
+
+
+
+
     return (
         <div className="font-poppins max-w-screen overflow-hidden">
             {/* Welcome Section */}
@@ -24,8 +32,18 @@ const InfoPage = () => {
                         <p className="mt-6 text-xl">
                             TICTA ICT THAILAND 2024: Top 10 Finalists for National Presentation Round
                         </p>
+                        <div className="">
+                            <button className=" p-4 rounded-lg w-52 border-2 border-black mt-10  transition duration-500 ease-in-out hover:text-white transform  hover:scale-110 hover:bg-black text-lg"
+                                onClick={() => {
+                                    navigate('/login')
+                                }}
+
+                            >Get Started!</button>
+                        </div>
                     </ScrollReveal>
+
                 </div>
+
             </ScrollReveal>
 
             {/* About Section */}

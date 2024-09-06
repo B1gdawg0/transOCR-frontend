@@ -14,15 +14,15 @@ import InfoPage from './InfoPage';
 
 const App = () => {
   const location = useLocation();
-  const isLoginPage = location.pathname === '/' || location.pathname === '/register';
-  const isInfoPage = location.pathname === '/info'
+  const isLoginPage = location.pathname === '/login' || location.pathname === '/register';
+  const isInfoPage = location.pathname === '/'
 
   return (
     <>
       {!isInfoPage && !isLoginPage && <NavBar />}
       <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/info" element={<InfoPage />} />
+        <Route path="/" element={<InfoPage />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/scan" element={<PdfInputPage />} />
         <Route path="/data" element={<CourseList />} />
         <Route path="/detail" element={<CourseDetail />} />
@@ -35,7 +35,7 @@ const App = () => {
 };
 
 createRoot(document.getElementById('root')).render(
-    <Router>
-      <App />
-    </Router>
+  <Router>
+    <App />
+  </Router>
 );
