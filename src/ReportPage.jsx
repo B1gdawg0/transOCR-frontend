@@ -73,7 +73,7 @@ const ReportPage = () => {
                         rows={6}
                     />
                 </div>
-                <button type='submit' className='bg-[#016b67] text-white p-3 rounded-lg w-full hover:bg-[#014f4d] transition duration-300'>
+                <button type='submit' className='bg-black text-white p-3 rounded-lg w-full hover:bg-[#014f4d] transition duration-300'>
                     ส่งข้อความ
                 </button>
             </form>

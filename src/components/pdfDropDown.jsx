@@ -5,6 +5,7 @@ import { NavigationOff } from 'lucide-react';
 function PdfDropdown() {
   const [selectedFile, setSelectedFile] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isCheckMark, setCheckMark] = useState(false);
   const [isDone, setDone] = useState(false);
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
@@ -60,15 +61,15 @@ function PdfDropdown() {
         });
 
         if (response_ocr.ok) {
+          setCheckMark(true);
           setDone(true);
-  
-  // Wait for the UI to update before navigating
-  setTimeout(() => {
-    fetchData(); // Fetch the updated data
-    navigate('/data'); // Navigate after a short delay
-  }, 2000); // Delay by 1 second (1000 ms)
-          } else {
-          alert("Something went wrong");
+          setTimeout(() => {
+            fetchData();
+            setCheckMark(false)
+            navigate('/data');
+          }, 2000);
+        } else {
+        alert("Something went wrong");
         }
       }
     } catch (error) {
@@ -81,28 +82,35 @@ function PdfDropdown() {
   return (
     <div className='h-screen w-screen flex items-center justify-center'>
       {isDone ? (
-       <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 flex-col z-50">
-        <div className='p-14 bg-white items-center justify-center rounded-3xl  flex flex-col'>
-          <div className="text-green-500 m-7 animate-bounce">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-16 w-16"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-          >
-            <path
-              fillRule="evenodd"
-              d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 00-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z"
-              clipRule="evenodd"
-            />
-          </svg>
+        isCheckMark ?
+        (
+          <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 flex-col z-50">
+          <div className='p-14 bg-white items-center justify-center rounded-3xl  flex flex-col'>
+            <div className="text-green-500 m-7 animate-bounce">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-16 w-16"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fillRule="evenodd"
+                d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 00-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z"
+                clipRule="evenodd"
+              />
+            </svg>
+            </div>
+          
+          <h1 className=' text-black block'>Submission Completed!</h1>
           </div>
-        
-        <h1 className=' text-black block'>Submission Completed!</h1>
+
         </div>
-  
-     </div>
-     
+        ):(
+          <div className='p-5 max-w-4xl w-full h-full bg-white rounded-xl shadow-md space-y-4 mt-5 flex flex-col justify-center'>
+            <center><NavigationOff className='text-gray-500'></NavigationOff></center>
+            <center><p className='text-gray-500'>You have already submitted. Please check the history page.</p></center>
+          </div>
+        )
       ) : (
         <div className='p-5 max-w-4xl w-full h-full bg-white rounded-xl shadow-md space-y-4 mt-5 flex flex-col'>
           <div className="flex flex-col">
