@@ -19,11 +19,6 @@ const AboutSection = () => {
                         Our solution is designed to be intuitive, efficient, and reliable for users across various industries.
                     </p>
                 </ScrollAnimation>
-
-
-         
-
-
             </div>
         </div>
     );
