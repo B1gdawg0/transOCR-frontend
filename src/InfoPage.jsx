@@ -8,6 +8,7 @@ import ScrollAnimation from "react-animate-on-scroll";
 import { useNavigate } from "react-router-dom";
 
 import 'animate.css';
+import Footer from "./components/footer";
 
 const InfoPage = () => {
 
@@ -102,6 +103,7 @@ const InfoPage = () => {
                 </div>
             </ScrollReveal>
 
+            <Footer/>
         </div>
     );
 };

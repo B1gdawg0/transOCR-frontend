@@ -80,7 +80,7 @@ function PdfDropdown() {
   };
 
   return (
-    <div className='h-screen w-screen flex items-center justify-center'>
+    <div className='h-screen w-screen flex items-center justify-center' id='pdf-bg'>
       {isDone ? (
         isCheckMark ?
         (
@@ -108,7 +108,7 @@ function PdfDropdown() {
         ):(
           <div className='p-5 max-w-4xl w-full h-full bg-white rounded-xl shadow-md space-y-4 mt-5 flex flex-col justify-center'>
             <center><NavigationOff className='text-gray-500'></NavigationOff></center>
-            <center><p className='text-gray-500'>You have already submitted. Please check the history page.</p></center>
+            <center><p className='text-gray-500'>You have already submitted. Please check the course list page.</p></center>
           </div>
         )
       ) : (

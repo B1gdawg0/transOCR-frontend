@@ -62,7 +62,8 @@ function CourseDetail(){
     };
 
     return (
-        <div className="p-8 min-h-screen font-sans ml-[140px] mr-2 my-10 rounded-xl shadow-2xl bg-white">
+        <div className='w-full h-auto' id='detail-bg'>
+            <div className="p-8 min-h-screen font-sans ml-24 mr-24 my-10 rounded-xl shadow-2xl bg-white">
             {
                 Object.entries(groupedCourses).map(([group, courses]) => (
                     <div key={group} className="mb-12">
@@ -89,6 +90,7 @@ function CourseDetail(){
                     </div>
                 ))
             }
+            </div>
         </div>
     );
 }
