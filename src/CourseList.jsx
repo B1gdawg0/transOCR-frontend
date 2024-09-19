@@ -11,7 +11,11 @@ const CoursesList = () => {
     useEffect(() => {
         const loadDataSource = async () => {
             try {
-                const response = await fetch(`http://127.0.0.1:5000/getavg/${localStorage.getItem("email")}`);
+                const response = await fetch(`http://127.0.0.1:5000/user/getavg/${localStorage.getItem("email")}`,{
+                    headers:{
+                        "Authorization":`Bearer ${localStorage.getItem("auth_token")}`
+                      },
+                });
     
                 if (response.ok) {
                     const { message, data } = await response.json();

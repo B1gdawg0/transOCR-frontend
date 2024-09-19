@@ -11,7 +11,7 @@ function Login() {
         e.preventDefault();
         if (email.trim() !== "" && password.trim() !== "") {
             try {
-                const response = await fetch("http://127.0.0.1:5000/login", {
+                const response = await fetch("http://127.0.0.1:5000/auth/login", {
                     method: "POST",
                     headers: {
                         'Content-Type': "application/json"
@@ -20,9 +20,9 @@ function Login() {
                 });
 
                 if (response.status === 200) {
-                    const { email, token } = await response.json();
-                    localStorage.setItem('uselessToken', token);
-                    localStorage.setItem('email', email);
+                    const {data , _ } = await response.json();
+                    localStorage.setItem('email', data.email);
+                    localStorage.setItem('auth_token', data.token)
                     navigate("/scan");
                 } else {
                     alert("error register");

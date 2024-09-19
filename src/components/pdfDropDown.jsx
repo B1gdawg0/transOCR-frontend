@@ -12,11 +12,19 @@ function PdfDropdown() {
 
   async function fetchData() {
     try {
-      const response = await fetch(`http://127.0.0.1:5000/info/${localStorage.getItem("email")}`);
+      const response = await fetch(
+        `http://127.0.0.1:5000/user/${localStorage.getItem("email")}`,
+        { 
+          headers:{
+            "Authorization":`Bearer ${localStorage.getItem("auth_token")}`
+          },
+          credentials: 'include'
+        }
+      );
+
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
-
       const data = await response.json();
       if (data.subjects.length !== 0) {
         setDone(true);
@@ -49,14 +57,20 @@ function PdfDropdown() {
     formData.append('file', selectedFile);
 
     try {
-      const response = await fetch(`http://127.0.0.1:5000/upload/${localStorage.getItem("email")}`, {
+      const response = await fetch(`http://127.0.0.1:5000/user/upload/${localStorage.getItem("email")}`, {
         method: 'PATCH',
+        headers:{
+          "Authorization":`Bearer ${localStorage.getItem("auth_token")}`
+        },
         body: formData,
       });
 
       if (response.ok) {
-        const response_ocr = await fetch(`http://127.0.0.1:5000/doOCR/${localStorage.getItem("email")}`, {
+        const response_ocr = await fetch(`http://127.0.0.1:5000/user/doOCR/${localStorage.getItem("email")}`, {
           method: 'PATCH',
+          headers:{
+            "Authorization":`Bearer ${localStorage.getItem("auth_token")}`
+          },
           body: {},
         });
 

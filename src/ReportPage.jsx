@@ -9,10 +9,11 @@ const ReportPage = () => {
         console.log(message)
         console.log(subject)
         try{
-            const response = await fetch (`http://127.0.0.1:5000/report/${localStorage.getItem("email")}`,{
+            const response = await fetch (`http://127.0.0.1:5000/user/report/${localStorage.getItem("email")}`,{
                 method:"POST",
                 headers:{
-                    'Content-Type':"application/json"
+                    'Content-Type':"application/json",
+                    "Authorization":`Bearer ${localStorage.getItem("auth_token")}`
                 },
                 body:JSON.stringify({
                     "category":subject,
