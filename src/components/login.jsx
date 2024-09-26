@@ -25,7 +25,7 @@ function Login() {
                     localStorage.setItem('auth_token', data.token)
                     navigate("/scan");
                 } else {
-                    alert("error register");
+                    alert("Email/Password ของคุณไม่สามารถใช้งานได้. กรุณาลองใหม่อีกครั้ง");
                 }
             } catch (e) {
                 console.log(e);

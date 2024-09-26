@@ -34,7 +34,7 @@ function RegisterForm() {
 
                     navigator(-1)
                 } else {
-                    alert("Something error")
+                    alert("Email/Password ของคุณไม่สามารถใช้งานได้. กรุณาลองใหม่อีกครั้ง")
                 }
 
             } catch (e) {
